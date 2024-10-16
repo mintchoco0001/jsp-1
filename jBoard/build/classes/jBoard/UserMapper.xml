@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="jBoard.UserMapper">
+	<!-- 해당 SQL의 메서드와 연결해줄 id = 메서드명 / resultType = 리턴타입 / parameterType = 매개변수 -->
+	<select id="getUser" resultType="jBoard.jBoardDTO">
+		select * from Board
+	</select>
+	<insert id="insertUser" parameterType="jBoard.jBoardDTO">
+		insert into Board(id,writer,title,content) values 
+		(#{id},#{writer},#{title},#{content})
+	</insert>
+	 <update id="updateUser" parameterType="String">
+		update Board set writer = #{writer} where id = #{id}
+	</update>
+	<delete id="deleteUser" parameterType="int">
+		delete from Board where no = #{no}
+	</delete>
+</mapper>
